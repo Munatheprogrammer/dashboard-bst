@@ -36,33 +36,20 @@ body {
 a { text-decoration: none; color: inherit; }
 ul { list-style: none; }
 
+/* ================= MOBILE DRAWER CHECKBOX HACK ================= */
+.sidebar-toggle-checkbox {
+  display: none;
+}
+
 .dashboard-layout {
   display: flex;
   width: 100vw;
   height: 100vh;
   overflow: hidden;
+  position: relative;
 }
 
-/* ================= SIDEBAR & MOBILE DRAWER TOGGLE ================= */
-.sidebar-toggle-checkbox {
-  display: none;
-}
-
-.mobile-menu-btn {
-  display: none;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  background: transparent;
-  border: 1px solid var(--stroke);
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  color: var(--text-dark);
-  font-size: 18px;
-  flex-shrink: 0;
-}
-
+/* ================= SIDEBAR ================= */
 .sidebar {
   width: var(--sidebar-w);
   min-width: var(--sidebar-w);
@@ -207,6 +194,21 @@ ul { list-style: none; }
   border-bottom: 0.5px solid var(--stroke);
   flex-shrink: 0;
   gap: 12px;
+}
+
+.mobile-menu-btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  background: transparent;
+  border: 1px solid var(--stroke);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  color: var(--text-dark);
+  font-size: 16px;
+  flex-shrink: 0;
 }
 
 .top-nav .txt h2 { font-weight: 800; font-size: 20px; }
@@ -381,10 +383,11 @@ td { height: 50px; padding: 0 15px; font-size: 12px; border-top: none; }
     height: 100vh;
     transform: translateX(-100%);
     box-shadow: 4px 0 15px rgba(0,0,0,0.3);
+    z-index: 1000;
   }
 
-  /* When the hidden checkbox is checked, slide the side drawer menu in */
-  .sidebar-toggle-checkbox:checked ~ .sidebar {
+  /* When checkbox is checked, slide sidebar into viewport */
+  .sidebar-toggle-checkbox:checked ~ .dashboard-layout .sidebar {
     transform: translateX(0);
   }
 
