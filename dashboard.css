@@ -226,7 +226,7 @@ ul { list-style: none; }
 }
 .search input { border: none; outline: none; width: 100%; font-size: 14px; }
 
-.bell { display: flex; align-items: center; justify-content: center; margin-left: 150px; cursor: pointer; }
+.bell { display: flex; align-items: center; justify-content: center; margin-left: auto; cursor: pointer; }
 .sec-tessa { display: flex; align-items: center; gap: 12px; height: 67px; }
 .sec-tessa .text p { font-size: 10px; color: var(--placeholder); }
 .sec-tessa .text h2 { font-size: 14px; }
