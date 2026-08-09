@@ -43,7 +43,26 @@ ul { list-style: none; }
   overflow: hidden;
 }
 
-/* ================= SIDEBAR ================= */
+/* ================= SIDEBAR & MOBILE DRAWER TOGGLE ================= */
+.sidebar-toggle-checkbox {
+  display: none;
+}
+
+.mobile-menu-btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: 1px solid var(--stroke);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  color: var(--text-dark);
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
 .sidebar {
   width: var(--sidebar-w);
   min-width: var(--sidebar-w);
@@ -55,7 +74,8 @@ ul { list-style: none; }
   height: 100vh;
   overflow-y: auto;
   flex-shrink: 0;
-  z-index: 10;
+  z-index: 100;
+  transition: transform 0.3s ease;
 }
 
 .brand {
@@ -186,6 +206,7 @@ ul { list-style: none; }
   padding: 0 20px;
   border-bottom: 0.5px solid var(--stroke);
   flex-shrink: 0;
+  gap: 12px;
 }
 
 .top-nav .txt h2 { font-weight: 800; font-size: 20px; }
@@ -205,7 +226,7 @@ ul { list-style: none; }
 }
 .search input { border: none; outline: none; width: 100%; font-size: 14px; }
 
-.bell { display: flex; align-items: center; justify-content: center; margin-left: 150px; cursor: pointer; }
+.bell { display: flex; align-items: center; justify-content: center; margin-left: auto; cursor: pointer; }
 .sec-tessa { display: flex; align-items: center; gap: 12px; height: 67px; }
 .sec-tessa .text p { font-size: 10px; color: var(--placeholder); }
 .sec-tessa .text h2 { font-size: 14px; }
@@ -334,7 +355,7 @@ td { height: 50px; padding: 0 15px; font-size: 12px; border-top: none; }
 
 .status.overdue { background: #EAC1C1; color: #E43E52; padding: 4px 8px; border-radius: 4px; font-size: 10px; font-weight: 600; }
 
-/* ================= RESPONSIVE MEDIA QUERIES (Fixed for Mobile Layout) ================= */
+/* ================= RESPONSIVE MEDIA QUERIES (Mobile Drawer Burger Menu) ================= */
 @media (max-width: 1200px) {
   .top-cards {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -349,32 +370,26 @@ td { height: 50px; padding: 0 15px; font-size: 12px; border-top: none; }
 }
 
 @media (max-width: 992px) {
-  .dashboard-layout {
-    flex-direction: column;
-    height: 100vh;
-    overflow: hidden;
+  .mobile-menu-btn {
+    display: flex;
   }
+
   .sidebar {
-    width: 100%;
-    min-width: 100%;
-    height: 70px;
-    max-height: 70px;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 15px;
-    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    transform: translateX(-100%);
+    box-shadow: 4px 0 15px rgba(0,0,0,0.3);
   }
-  .sidebar .brand,
-  .sidebar .nav,
-  .sidebar .user-card,
-  .sidebar .quick-actions,
-  .sidebar .logout-btn {
-    display: none; /* Collapses sidebar into a compact top header bar on mobile like claimdetails */
+
+  /* When the hidden checkbox is checked, slide the side drawer menu in */
+  .sidebar-toggle-checkbox:checked ~ .sidebar {
+    transform: translateX(0);
   }
+
   .main-area {
-    height: calc(100vh - 70px);
-    overflow-y: auto;
+    width: 100vw;
   }
 }
 
@@ -384,7 +399,7 @@ td { height: 50px; padding: 0 15px; font-size: 12px; border-top: none; }
     grid-template-columns: 1fr;
   }
   .top-nav {
-    flex-direction: column;
+    flex-wrap: wrap;
     height: auto;
     padding: 10px;
     gap: 10px;
@@ -392,6 +407,7 @@ td { height: 50px; padding: 0 15px; font-size: 12px; border-top: none; }
   .search {
     max-width: 100%;
     width: 100%;
+    order: 3;
   }
   .bell {
     margin-left: 0;
