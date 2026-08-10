@@ -39,8 +39,7 @@ ul { list-style: none; }
 .dashboard-layout {
   display: flex;
   width: 100vw;
-  height: 100vh;
-  overflow: hidden;
+  min-height: 100vh;
 }
 
 /* ================= SIDEBAR & MOBILE DRAWER TOGGLE ================= */
@@ -63,6 +62,22 @@ ul { list-style: none; }
   flex-shrink: 0;
 }
 
+.sidebar-close-btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: var(--radius-sm);
+  color: var(--white);
+  font-size: 16px;
+  cursor: pointer;
+  margin-left: auto;
+  margin-bottom: 15px;
+}
+
 .sidebar {
   width: var(--sidebar-w);
   min-width: var(--sidebar-w);
@@ -70,7 +85,7 @@ ul { list-style: none; }
   color: var(--white);
   display: flex;
   flex-direction: column;
-  padding: 14px 12px 20px;
+  padding: 14px 12px 30px;
   height: 100vh;
   overflow-y: auto;
   flex-shrink: 0;
@@ -144,7 +159,7 @@ ul { list-style: none; }
 .user-role { font-size: 10px; color: var(--white); opacity: 0.75; }
 .user-caret { width: 14px; height: 14px; color: var(--white); transform: rotate(90deg); }
 
-.quick-actions { margin-bottom: auto; }
+.quick-actions { margin-bottom: 20px; }
 .quick-actions__label { font-size: 10px; color: var(--white); opacity: 0.6; padding: 0 4px; margin-bottom: 10px; }
 
 .quick-btn {
@@ -179,7 +194,7 @@ ul { list-style: none; }
   color: var(--white);
   font-size: 13px;
   font-weight: 600;
-  margin-top: 16px;
+  margin-top: auto;
   width: 130px;
   cursor: pointer;
 }
@@ -190,10 +205,9 @@ ul { list-style: none; }
 .main-area {
   flex: 1;
   min-width: 0;
-  height: 100vh;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  min-height: 100vh;
 }
 
 .top-nav {
@@ -241,7 +255,6 @@ ul { list-style: none; }
 .dashboard-content {
   flex: 1;
   padding: 10px 20px 30px;
-  overflow-y: auto;
 }
 
 .date-box {
@@ -380,17 +393,24 @@ td { height: 50px; padding: 0 15px; font-size: 12px; border-top: none; }
     display: flex;
   }
 
+  .sidebar-close-btn {
+    display: flex;
+  }
+
   .sidebar {
     position: fixed;
     top: 0;
     left: 0;
     height: 100vh;
+    max-height: 100vh;
     transform: translateX(-100%);
     box-shadow: 4px 0 15px rgba(0,0,0,0.3);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   /* When the hidden checkbox is checked, slide the side drawer menu in */
-  .sidebar-toggle-checkbox:checked ~ .sidebar {
+  .sidebar-toggle-checkbox:checked ~ .dashboard-layout .sidebar {
     transform: translateX(0);
   }
 
