@@ -86,7 +86,10 @@ ul { list-style: none; }
   display: flex;
   flex-direction: column;
   padding: 14px 12px 30px;
+  position: sticky;
+  top: 0;
   height: 100vh;
+  max-height: 100vh;
   overflow-y: auto;
   flex-shrink: 0;
   z-index: 100;
@@ -374,7 +377,7 @@ td { height: 50px; padding: 0 15px; font-size: 12px; border-top: none; }
 
 .status.overdue { background: #EAC1C1; color: #E43E52; padding: 4px 8px; border-radius: 4px; font-size: 10px; font-weight: 600; }
 
-/* ================= RESPONSIVE MEDIA QUERIES ================= */
+/* ================= RESPONSIVE MEDIA QUERIES (Mobile Drawer Burger Menu) ================= */
 @media (max-width: 1200px) {
   .top-cards {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -388,7 +391,6 @@ td { height: 50px; padding: 0 15px; font-size: 12px; border-top: none; }
   }
 }
 
-/* Only trigger mobile drawer behavior on actual mobile screen widths (768px and below) */
 @media (max-width: 768px) {
   .mobile-menu-btn {
     display: flex;
