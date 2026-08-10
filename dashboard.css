@@ -36,20 +36,33 @@ body {
 a { text-decoration: none; color: inherit; }
 ul { list-style: none; }
 
-/* ================= MOBILE DRAWER CHECKBOX HACK ================= */
-.sidebar-toggle-checkbox {
-  display: none;
-}
-
 .dashboard-layout {
   display: flex;
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  position: relative;
 }
 
-/* ================= SIDEBAR ================= */
+/* ================= SIDEBAR & MOBILE DRAWER TOGGLE ================= */
+.sidebar-toggle-checkbox {
+  display: none;
+}
+
+.mobile-menu-btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: 1px solid var(--stroke);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  color: var(--text-dark);
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
 .sidebar {
   width: var(--sidebar-w);
   min-width: var(--sidebar-w);
@@ -196,19 +209,10 @@ ul { list-style: none; }
   gap: 12px;
 }
 
-.mobile-menu-btn {
-  display: none;
+.top-nav-left {
+  display: flex;
   align-items: center;
-  justify-content: center;
-  width: 38px;
-  height: 38px;
-  background: transparent;
-  border: 1px solid var(--stroke);
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  color: var(--text-dark);
-  font-size: 16px;
-  flex-shrink: 0;
+  gap: 12px;
 }
 
 .top-nav .txt h2 { font-weight: 800; font-size: 20px; }
@@ -228,7 +232,7 @@ ul { list-style: none; }
 }
 .search input { border: none; outline: none; width: 100%; font-size: 14px; }
 
-.bell { display: flex; align-items: center; justify-content: center; margin-left: auto; cursor: pointer; }
+.bell { display: flex; align-items: center; justify-content: center; margin-left: 150px; cursor: pointer; }
 .sec-tessa { display: flex; align-items: center; gap: 12px; height: 67px; }
 .sec-tessa .text p { font-size: 10px; color: var(--placeholder); }
 .sec-tessa .text h2 { font-size: 14px; }
@@ -383,11 +387,10 @@ td { height: 50px; padding: 0 15px; font-size: 12px; border-top: none; }
     height: 100vh;
     transform: translateX(-100%);
     box-shadow: 4px 0 15px rgba(0,0,0,0.3);
-    z-index: 1000;
   }
 
-  /* When checkbox is checked, slide sidebar into viewport */
-  .sidebar-toggle-checkbox:checked ~ .dashboard-layout .sidebar {
+  /* When the hidden checkbox is checked, slide the side drawer menu in */
+  .sidebar-toggle-checkbox:checked ~ .sidebar {
     transform: translateX(0);
   }
 
