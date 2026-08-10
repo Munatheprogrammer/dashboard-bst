@@ -249,6 +249,7 @@ ul { list-style: none; }
 }
 .search input { border: none; outline: none; width: 100%; font-size: 14px; }
 
+
 .bell { display: flex; align-items: center; justify-content: center; margin-left: 150px; cursor: pointer; }
 .sec-tessa { display: flex; align-items: center; gap: 12px; height: 67px; }
 .sec-tessa .text p { font-size: 10px; color: var(--placeholder); }
@@ -265,7 +266,6 @@ ul { list-style: none; }
   justify-content: flex-end;
   gap: 20px;
   margin: 20px 0;
-  position: relative;
 }
 
 .date, .filter {
@@ -277,59 +277,6 @@ ul { list-style: none; }
   border-radius: var(--radius-sm);
   gap: 10px;
   cursor: pointer;
-  position: relative;
-  transition: all 0.2s ease;
-  user-select: none;
-}
-
-.date:hover, .filter:hover {
-  border-color: var(--accent);
-  background: rgba(66, 64, 227, 0.04);
-}
-
-.date.active, .filter.active {
-  border-color: var(--accent);
-  background: rgba(66, 64, 227, 0.08);
-  box-shadow: 0 0 0 2px rgba(66, 64, 227, 0.15);
-}
-
-/* ================= INTERACTIVE DROPDOWN MENU ================= */
-.interactive-dropdown {
-  position: absolute;
-  top: calc(100% + 6px);
-  right: 0;
-  background: var(--white);
-  border: 1px solid var(--stroke-light);
-  border-radius: var(--radius-md);
-  box-shadow: 0 8px 24px rgba(11, 23, 39, 0.12);
-  width: 180px;
-  display: none;
-  flex-direction: column;
-  z-index: 1000;
-  overflow: hidden;
-}
-
-.interactive-dropdown.show {
-  display: flex;
-}
-
-.dropdown-item {
-  padding: 10px 14px;
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--text-dark);
-  cursor: pointer;
-  border-bottom: 0.5px solid var(--stroke-light);
-  transition: background 0.15s;
-}
-
-.dropdown-item:last-child {
-  border-bottom: none;
-}
-
-.dropdown-item:hover {
-  background: rgba(66, 64, 227, 0.08);
-  color: var(--accent);
 }
 
 /* ================= CARDS WITH FLOATING EFFECT ================= */
@@ -428,16 +375,6 @@ thead { background: var(--page-bg); }
 th { height: 45px; padding: 0 15px; text-align: left; font-size: 12px; font-weight: 600; }
 
 td { height: 50px; padding: 0 15px; font-size: 12px; border-top: none; }
-
-/* Interactive Table Rows */
-tbody tr {
-  cursor: pointer;
-  transition: background-color 0.15s ease;
-}
-
-tbody tr:hover {
-  background-color: rgba(66, 64, 227, 0.05);
-}
 
 .status.overdue { background: #EAC1C1; color: #E43E52; padding: 4px 8px; border-radius: 4px; font-size: 10px; font-weight: 600; }
 
